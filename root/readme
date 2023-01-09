@@ -1,0 +1,51 @@
+TODO
+
+<---CAPSTONE REQUERIMENTS--->
+-Front-end architecture developed with Next.js
+-At least one method of authentication
+-Database
+-API
+-Deployment
+-Additional Features
+
+You are encouraged to develop additional features for your app. You may develop any of the features recommended below or develop new features that are not listed here:
+
+-User interface updates
+-Display restaurants on the home page
+-Display dishes on a dishes page only after a restaurant is selected
+-Enable search functionality for restaurants and dishes
+-Conditional rendering of the checkout cart so that it only appears after dishes are selected
+-Display order history
+-User profile
+-Grading Your Application
+
+Your application will be evaluated in a manner similar to user acceptance testing. The grading team will access your site as users and confirm that the following functionalities are working:
+
+-Create an account with an email address and password
+-A success message is received upon account creation
+-The email address or username appears at the top right corner when logged in
+-Log in to account
+-The user can log in with an email address, password, or OAuth2 authentication
+-The user can log out of the account
+-Home page
+-A list of restaurants is displayed
+-Search functionality
+-User can search for restaurants from the home page
+-User can search for dishes from a restaurant page
+-Cart functionality
+-User can add dishes to cart
+-User can remove dishes from cart
+-Price updates automatically
+-User can update quantity in cart
+-Checkout
+-User can check out with Stripe
+-User receives success message
+-Input fields are validated
+
+-FILE STRUCTURE
+-DATA STRUCTURE
+-INPUT FORM
+-REACT HOOKS --'USE CONTEXT'
+-COMPONENT TREE
+-PAGES
+-NECESSARY FUNCTIONS
