@@ -9,7 +9,8 @@ import {
 import RestaurantList from "./restaurants/restaurantList";
 import { InputGroup, Input, Row, Col, Container } from "reactstrap";
 import AppContext from "../components/context";
-import client from "./client";
+import HeroSection from "../components/hero";
+import SideBar from "../components/sidebarMKT";
 
 function Home() {
   const addItem = useContext(AppContext);
@@ -17,9 +18,9 @@ function Home() {
 
   return (
     <>
+      <HeroSection src='https://images.unsplash.com/photo-1533143708019-ea5cfa80213e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8' />
       <Container>
         <div className='search'>
-          <h2> Local Restaurants</h2>
           <InputGroup>
             <InputGroup type='append'> Search </InputGroup>
             <Input
@@ -33,24 +34,31 @@ function Home() {
       <Row>
         <Col
           className='bg-dark border'
-          md='8'
-          lg='8'
-          xl='8'>
+          md='3'
+          lg='3'
+          xl='3'>
+          <SideBar />
+        </Col>
+        <Col
+          className='bg-dark border'
+          md='9'
+          lg='9'
+          xl='9'>
           <Container>
             <RestaurantList search={query} />
           </Container>
         </Col>
-        <Col
+        {/* <Col
           className='bg-light border'
-          md='4'
-          lg='4'
-          xl='4'>
+          md='3'
+          lg='3'
+          xl='3'>
           {addItem.cart.items.length !== 0 && (
             <Row xs='8'>
               <Cart />
             </Row>
           )}
-        </Col>
+        </Col> */}
       </Row>
     </>
   );

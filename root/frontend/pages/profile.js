@@ -1,80 +1,74 @@
-// import { useAuth } from "../lib/auth2";
-// import React, { useState } from "react";
-// import { Form, FormGroup, Label, Input, Col, Button } from "reactstrap";
+import { useAuth } from "../lib/auth2";
+import React, { useState } from "react";
+import { Form, FormGroup, Label, Input, Col } from "reactstrap";
+import Cookies from "js-cookie";
+import api from "../services/api";
+import axios from "axios";
 
-// export default function Profile() {
-//   const { user, updateUser } = useAuth();
-//   const [loading, setLoading] = useState(false);
-//   const [data, updateData] = useState({});
+export default function Profile() {
+  // const { user } = useAuth();
 
-//   function onChange(event) {
-//     updateData({ ...data, [event.target.name]: event.target.value });
+  return (
+    <Form>
+      <FormGroup row>
+        <Label
+          for='exampleEmail'
+          sm={2}>
+          Email
+        </Label>
+        <Col sm={10}>
+          <Input
+            name='email'
+            placeholder='test'
+            type='email'
+          />
+        </Col>
+      </FormGroup>
+      <FormGroup row>
+        <Label
+          for='username'
+          sm={2}>
+          Username
+        </Label>
+        <Col sm={10}>
+          <Input
+            name='username'
+            placeholder='test'
+            type='username'
+          />
+        </Col>
+      </FormGroup>
+    </Form>
+  );
+}
+
+// export async function getServerSideProps() {
+//   const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:1337";
+//   const token = Cookies.get("token");
+
+//   // const { user: user } = await api.get("users/me");
+//   // console.log(`user object: ${user}`);
+
+//   const { user } = await axios.get(`${API_URL}/users/me`, {
+//     baseURL: API_URL[process.env.NODE_ENV],
+//     headers: {
+//       Accept: "application/json",
+//       "Content-Type": "application/json",
+//       Authorization: `Bearer ${token}`,
+//     },
+//   });
+
+//   if (!user) {
+//     return {
+//       notFound: true,
+//     };
 //   }
+//   console.log("ssr" + user);
 
-//   // function submitProfile() {
-//   //   setLoading(true);
-//   //   updateUser(data.id, data.username)
-//   //     .then((res) => {
-//   //       setLoading(false);
-//   //       // set authed User in global context to update header/app state
-//   //       // setUser(res.data.user);
-//   //       // setUser((user = res.data.user));
-//   //       // alert(`welcome, ${res.data.user.username}`);
-//   //       console.log(`DATA FROM STRAPPI ${JSON.stringify(res.data)}`);
-//   //     })
-//   //     .catch((error) => {
-//   //       setError(error);
-//   //       setLoading(false);
-//   //     });
-//   // }
-
-//   return (
-//     <Form>
-//       <FormGroup row>
-//         <Label
-//           for='exampleEmail'
-//           sm={2}>
-//           Email
-//         </Label>
-//         <p>{user.email}</p>
-//         <Col sm={10}>
-//           <Input
-//             onChange={(event) => onChange(event)}
-//             name='email'
-//             // placeholder={user.email}
-//             type='email'
-//           />
-//         </Col>
-//       </FormGroup>
-//       <FormGroup row>
-//         <Label
-//           for='username'
-//           sm={2}>
-//           Email
-//         </Label>
-//         <Col sm={10}>
-//           <p>{user.username}</p>
-//           <Input
-//             onChange={(event) => onChange(event)}
-//             name='username'
-//             // placeholder={user.username}
-//             type='username'
-//           />
-//         </Col>
-//         <Button onSubmit={submitProfile()} />
-//       </FormGroup>
-//     </Form>
-//   );
+//   const data = user;
+//   return {
+//     props: {
+//       data,
+//     },
+//   };
 // }
-
-// // export async function getServerSideProps() {
-// //   const { user } = useAuth();
-// //   console.log(user);
-// //   if (user) {
-// //     return {
-// //       props: user,
-// //     };
-// //   } else {
-// //     <p> error </p>;
-// //   }
-// // }

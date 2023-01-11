@@ -1,9 +1,11 @@
 import { gql, useQuery } from "@apollo/client";
 import Dishes from "../../components/dishes";
-import { Container, Row, InputGroup, InputGroupAddon, Input } from "reactstrap";
+import { Container, Row, InputGroup, Input } from "reactstrap";
 import { useState, useContext } from "react";
 import AppContext from "../../components/context";
 import Cart from "../../components/cart";
+import HeroSection from "../../components/hero";
+import PopOver from "../../components/popOver";
 
 export default function Test({ id }) {
   console.log(id);
@@ -16,6 +18,9 @@ export default function Test({ id }) {
       restaurant(id: $id) {
         id
         name
+        image {
+          url
+        }
         dishes {
           id
           name
@@ -37,15 +42,23 @@ export default function Test({ id }) {
   if (error) return <p>ERROR here</p>;
   if (!data) return <p>Not found</p>;
 
+  const restaurant = data.restaurant;
+  console.log(restaurant.dishes);
   console.log(query);
 
   return (
     <>
+      <HeroSection
+        src={`http://localhost:1337` + restaurant.image.url}
+        title={restaurant.name}
+        text={restaurant.description}
+      />
+      <PopOver />
       <Container>
         <div className='search'>
-          <h2>{data.restaurant.name}</h2>
+          <h2>{restaurant.name}</h2>
           <InputGroup>
-            <InputGroupAddon addonType='append'> Search </InputGroupAddon>
+            <InputGroup type='append'> Search </InputGroup>
             <Input
               onChange={(e) => setQuery(e.target.value.toLocaleLowerCase())}
               value={query}

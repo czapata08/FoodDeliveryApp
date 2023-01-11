@@ -52,7 +52,7 @@ const Register = () => {
           md={{ size: 5, offset: 3 }}>
           <div className='paper'>
             <div className='header'>
-              <img src='http://localhost:1337/uploads/5a60a9d26a764e7cba1099d8b157b5e9.png' />
+              {/* <img src='http://localhost:1337/uploads/5a60a9d26a764e7cba1099d8b157b5e9.png' /> */}
             </div>
             <section className='wrapper'>
               {Object.entries(error).length !== 0 &&
@@ -143,7 +143,7 @@ const Register = () => {
           .header {
             width: 100%;
             height: 120px;
-            background-color: #2196f3;
+            background-color: lightgray;
             margin-bottom: 30px;
             border-radius-top: 6px;
           }

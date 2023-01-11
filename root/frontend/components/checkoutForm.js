@@ -5,10 +5,11 @@ import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import CardSection from "./cardSection";
 import AppContext from "./context";
 import Cookies from "js-cookie";
-
+import { useRouter } from "next/router";
 
 function CheckoutForm() {
-  //init state for order data 
+  const router = useRouter();
+  //init state for order data
   const [data, setData] = useState({
     address: "",
     city: "",
@@ -20,6 +21,7 @@ function CheckoutForm() {
   const elements = useElements();
   //App context - user info
   const appContext = useContext(AppContext);
+  const { cleanCart } = appContext;
   const [error, setError] = useState("");
   function onChange(e) {
     // set the key = to the name property equal to the value typed ???
@@ -53,9 +55,15 @@ function CheckoutForm() {
       }),
     });
 
+    if (response) {
+      alert("success");
+      router.push("/");
+      cleanCart();
+    }
+
     if (!response.ok) {
       setError(response.statusText);
-      console.log("SUCCESS");
+      alert("error");
     }
 
     // OTHER stripe methods you can use depending on app
@@ -74,29 +82,44 @@ function CheckoutForm() {
   }
 
   return (
-    <div className="paper">
+    <div className='paper'>
       <h5>Your information:</h5>
       <hr />
       <FormGroup style={{ display: "flex" }}>
         <div style={{ flex: "0.90", marginRight: 10 }}>
           <Label>Address</Label>
-          <Input name="address" onChange={onChange} />
+          <Input
+            name='address'
+            onChange={onChange}
+          />
         </div>
       </FormGroup>
       <FormGroup style={{ display: "flex" }}>
         <div style={{ flex: "0.65", marginRight: "6%" }}>
           <Label>City</Label>
-          <Input name="city" onChange={onChange} />
+          <Input
+            name='city'
+            onChange={onChange}
+          />
         </div>
         <div style={{ flex: "0.25", marginRight: 0 }}>
           <Label>State</Label>
-          <Input name="state" onChange={onChange} />
+          <Input
+            name='state'
+            onChange={onChange}
+          />
         </div>
       </FormGroup>
 
-      <CardSection data={data} stripeError={error} submitOrder={submitOrder} />
+      <CardSection
+        data={data}
+        stripeError={error}
+        submitOrder={submitOrder}
+      />
 
-      <style jsx global>
+      <style
+        jsx
+        global>
         {`
           .paper {
             border: 1px solid lightgray;

@@ -1,0 +1,1 @@
+{"ast":null,"code":"// // __tests__/snapshot.js\n\n// import { render } from \"@testing-library/react\";\n// import Home from \"../pages/index\";\n\n// it(\"renders homepage unchanged\", () => {\n//   const { container } = render(<Home />);\n//   expect(container).toMatchSnapshot();\n// });","map":null,"metadata":{},"sourceType":"script"}

@@ -26,21 +26,21 @@ import AppContext from "./context";
 
 const Test = (props) => {
   const [isOpen, setIsOpen] = useState(false);
-  //   const title = "Nurture Kitchen";
+  const title = "Nurture Kitchen";
   const { cart } = useContext(AppContext);
   var { user, setUser, logout } = useAuth();
   const toggle = () => setIsOpen(!isOpen);
 
   return (
     <div>
-      {/* <Head>
+      <Head>
         <title>{title}</title>
         <meta charSet='utf-8' />
         <meta
           name='viewport'
           content='initial-scale=1.0, width=device-width'
         />
-      </Head> */}
+      </Head>
 
       <Navbar className='navbar-expand-lg'>
         <NavbarBrand href='/'>Nurture Kitchen</NavbarBrand>

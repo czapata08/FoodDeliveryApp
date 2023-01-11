@@ -1,17 +1,17 @@
 import { useContext, useState } from "react";
 import Head from "next/head";
 import AppContext from "../components/context";
-import Home from "./index";
 import Layout from "../components/layout";
 import Cookie from "js-cookie";
 import { AuthProvider } from "../lib/auth2";
-import { DishesDisplay } from "./display";
 import { ApolloProvider } from "@apollo/client";
-import client from "./client";
+import client from "../lib/client";
+
+// import "bootstrap/dist/css/bootstrap.min.css";
+// import "../styles/globals.css";
 
 function MyApp(props) {
-  var { cart, addItem, removeItem, user, setUser, isAuthenticated } =
-    useContext(AppContext);
+  var { cart, addItem, removeItem, cleanCart } = useContext(AppContext);
   const [state, setState] = useState({ cart: cart });
   const { Component, pageProps } = props;
 
@@ -83,30 +83,37 @@ function MyApp(props) {
     setState({ cart: newCart });
   };
 
+  cleanCart = () => {
+    let newCart = {
+      items: 0,
+      total: 0,
+    };
+    setState({ cart: newCart });
+  };
   return (
-    <ApolloProvider client={client}>
-      <AppContext.Provider
-        value={{
-          cart: state.cart,
-          addItem: addItem,
-          removeItem: removeItem,
-        }}>
+    <>
+      <Head>
+        <link
+          rel='stylesheet'
+          href='https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css'
+        />
+      </Head>
+      <ApolloProvider client={client}>
         <AuthProvider>
-          <Head>
-            <link
-              rel='stylesheet'
-              href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css'
-              integrity='sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm'
-              crossOrigin='anonymous'
-            />
-          </Head>
-
-          <Layout>
-            <Component {...pageProps} />
-          </Layout>
+          <AppContext.Provider
+            value={{
+              cart: state.cart,
+              addItem: addItem,
+              removeItem: removeItem,
+              cleanCart: cleanCart,
+            }}>
+            <Layout>
+              <Component {...pageProps} />
+            </Layout>
+          </AppContext.Provider>
         </AuthProvider>
-      </AppContext.Provider>
-    </ApolloProvider>
+      </ApolloProvider>
+    </>
   );
 }
 
