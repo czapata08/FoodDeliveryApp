@@ -1,0 +1,1 @@
+{"ast":null,"code":"import React from \"react\";\nvar __jsx = React.createElement;\n// pages/500.js\nexport default function Custom500() {\n  return __jsx(\"h1\", null, \"500 - Server-side error occurred\");\n}","map":null,"metadata":{},"sourceType":"module"}

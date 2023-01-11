@@ -1,5 +1,16 @@
 {
+  "/404": "pages/404.html",
+  "/500": "pages/500.html",
   "/_app": "pages/_app.js",
+  "/checkout": "pages/checkout.html",
+  "/display": "pages/display.html",
+  "/": "pages/index.html",
+  "/login": "pages/login.html",
+  "/profile": "pages/profile.html",
+  "/register": "pages/register.html",
+  "/restaurants/[id]": "pages/restaurants/[id].js",
+  "/restaurants/restaurantList": "pages/restaurants/restaurantList.html",
+  "/test": "pages/test.html",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js"
 }
